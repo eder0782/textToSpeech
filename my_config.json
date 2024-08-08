@@ -1,0 +1,55 @@
+{
+  "run_name": "model_finetune",
+  "model": "tts_models/multilingual/multi-dataset/xtts_v2",
+  "run_mode": "finetune",
+  "batch_size": 32,
+  "eval_batch_size": 16,
+  "num_loader_workers": 4,
+  "num_val_loader_workers": 4,
+  "epochs": 100,
+  "text_cleaner": "phoneme_cleaners",
+  "use_phonemes": true,
+  "phoneme_language": "en-us",
+  "phoneme_cache_path": "cache/phonemes",
+  "output_path": "output/",
+  "datasets": [
+    {
+      "name": "ljspeech",
+      "path": "path/to/your/dataset/",
+      "meta_file_train": "metadata_train.csv",
+      "meta_file_val": "metadata_val.csv"
+    }
+  ],
+  "audio": {
+    "sample_rate": 22050,
+    "frame_length_ms": 50,
+    "frame_shift_ms": 12.5,
+    "preemphasis": 0.97,
+    "num_mels": 80,
+    "min_level_db": -100,
+    "ref_level_db": 20,
+    "fmin": 50,
+    "fmax": 7600
+  },
+  "optimizer": {
+    "type": "Adam",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "grad_clip": 1.0
+  },
+  "scheduler": {
+    "type": "StepLR",
+    "step_size": 50,
+    "gamma": 0.5
+  },
+  "loss": {
+    "type": "tacotron2"
+  },
+  "audio_processor": {
+    "type": "griffin_lim",
+    "fft_size": 1024,
+    "hop_size": 256,
+    "win_length": 1024,
+    "num_iters": 60
+  }
+}
