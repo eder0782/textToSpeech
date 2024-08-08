@@ -1,5 +1,5 @@
 {
-  "run_name": "model_finetune",
+  "run_name": "model_finetune_pt_br",
   "model": "tts_models/multilingual/multi-dataset/xtts_v2",
   "run_mode": "finetune",
   "batch_size": 32,
@@ -9,13 +9,13 @@
   "epochs": 100,
   "text_cleaner": "phoneme_cleaners",
   "use_phonemes": true,
-  "phoneme_language": "en-us",
+  "phoneme_language": "pt-br",
   "phoneme_cache_path": "cache/phonemes",
-  "output_path": "output/",
+  "output_path": "/dataset",
   "datasets": [
     {
-      "name": "ljspeech",
-      "path": "path/to/your/dataset/",
+      "name": "your_pt_br_dataset",
+      "path": "path/to/your/portuguese_br_dataset/",
       "meta_file_train": "metadata_train.csv",
       "meta_file_val": "metadata_val.csv"
     }
